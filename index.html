@@ -1,0 +1,761 @@
+<!DOCTYPE html><html lang="en"><head>
+	<meta name="generator" content="Hugo 0.151.0">
+    <meta charset="utf-8">
+<title>Reproducible experiments or didn't happen</title>
+<meta name="description" content="The replicability crisis and recipes for self-organizing systems">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/slides-2025-fair/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/slides-2025-fair/reveal-js/dist/reveal.css">
+  <link rel="stylesheet" href="/slides-2025-fair/css/custom-theme.min.741a0507d31b17df040c94df9ffe681c9510e1413952bf2274dd9b1c27bb395b.css" id="theme"><link rel="stylesheet" href="/slides-2025-fair/highlight-js/solarized-dark.min.css">
+<link rel="stylesheet" href="https://gitcdn.link/repo/DanySK/css-blur-animation/master/blur.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/81ac037be0.js" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section><h1 id="costruzione-di-software-per-la-ricerca-ed-esperimenti-in-silico-riproducibili-buone-pratiche">Costruzione di software per la ricerca ed esperimenti in-silico riproducibili: buone pratiche</h1>
+<h4 id="2025-10-15">2025-10-15</h4>
+<h2 id="danilo-pianini"><a href="mailto:danilo.pianini@unibo.it">Danilo Pianini</a></h2>
+<h3 id="alma-mater-studiorum--università-di-bologna">Alma Mater Studiorum – Università di Bologna</h3>
+</section>
+<p>
+</p><section data-noprocess="" data-shortcode-slide="" data-background-image="https://danysk.github.io/slides-2025-fair/hippo2.jpg" data-state="blur-animation-light" data-transition="fade-in fade-out">
+  
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p></p>
+<!-- white background -->
+<span style="background-color: white; border-radius: 0.2em;">
+source: https://www.earth.com/news/hippopotamus-population-hit-hard-by-habitat-destruction
+</span>
+</section><section>
+<h1 id="hippos-hippopotamus-amphibius-facts">Hippos (Hippopotamus amphibius) facts</h1>
+<ul>
+<li><span class="fragment ">Big (second largest land animal after elephants)</span></li>
+<li><span class="fragment ">(Relatively) Fast (30km/h on land, 8km/h in water)</span></li>
+<li><span class="fragment ">Strong bite (13.8MPa, twice the strength of a lion bite)</span></li>
+<li><span class="fragment ">Aggressive and highly unpredictable</span></li>
+<li><span class="fragment ">Among the deadliest animals worldwide by human deaths</span></li>
+</ul>
+</section><section>
+<p>Let’s play “science or fiction”</p>
+<h1 id="an-adult-hippos-bite-can-crush-in-half-an-adult-crocodile">An adult hippo’s bite can crush in half an adult crocodile</h1>
+<iframe id="wooclap-67bf587983bca1e34a7e37b4" allowfullscreen="" frameborder="0" height="100%" mozallowfullscreen="" style="min-width: 500px;
+    min-height:800px" src="https://app.wooclap.com/events/MINRHT/questions/67bf587983bca1e34a7e37b4" width="100%"></iframe>
+<script>
+    if (/.*?([?&])print-pdf/.test(window.location.toString())) {
+        console.log("Printing detected. Disabling wooclap.")
+        let toDisable = document.getElementById("wooclap-67bf587983bca1e34a7e37b4");
+        let parent = toDisable.parentElement;
+        toDisable.remove()
+        let replacement = document.createTextNode(
+            "There was a Wooclap pool here, but they get disabled when printing.\
+            You might be able to retrieve the results at:\
+            https://app.wooclap.com/events/MINRHT/questions/67bf587983bca1e34a7e37b4"
+        );
+        parent.appendChild(replacement)
+    }
+</script>
+</section><section>
+<iframe id="wooclap-67c04a1eb1c547d82e6b75fd" allowfullscreen="" frameborder="0" height="100%" mozallowfullscreen="" style="min-width: 500px;
+    min-height:1000px" src="https://app.wooclap.com/events/MINRHT/questions/67c04a1eb1c547d82e6b75fd" width="100%"></iframe>
+<script>
+    if (/.*?([?&])print-pdf/.test(window.location.toString())) {
+        console.log("Printing detected. Disabling wooclap.")
+        let toDisable = document.getElementById("wooclap-67c04a1eb1c547d82e6b75fd");
+        let parent = toDisable.parentElement;
+        toDisable.remove()
+        let replacement = document.createTextNode(
+            "There was a Wooclap pool here, but they get disabled when printing.\
+            You might be able to retrieve the results at:\
+            https://app.wooclap.com/events/MINRHT/questions/67c04a1eb1c547d82e6b75fd"
+        );
+        parent.appendChild(replacement)
+    }
+</script>
+</section><section>
+<p><img src="crocodile80.jpg" alt="crocodile"></p>
+</section><section>
+<iframe id="wooclap-67c04a45099d357cb3fae084" allowfullscreen="" frameborder="0" height="100%" mozallowfullscreen="" style="min-width: 500px;
+    min-height:1000px" src="https://app.wooclap.com/events/MINRHT/questions/67c04a45099d357cb3fae084" width="100%"></iframe>
+<script>
+    if (/.*?([?&])print-pdf/.test(window.location.toString())) {
+        console.log("Printing detected. Disabling wooclap.")
+        let toDisable = document.getElementById("wooclap-67c04a45099d357cb3fae084");
+        let parent = toDisable.parentElement;
+        toDisable.remove()
+        let replacement = document.createTextNode(
+            "There was a Wooclap pool here, but they get disabled when printing.\
+            You might be able to retrieve the results at:\
+            https://app.wooclap.com/events/MINRHT/questions/67c04a45099d357cb3fae084"
+        );
+        parent.appendChild(replacement)
+    }
+</script>
+</section><section>
+<p><img src="pic.webp" alt="pic"></p>
+</section><section>
+<p>Again, science or fiction?</p>
+<h1 id="humans-can-tame-and-ride-hippos">Humans can tame and ride hippos</h1>
+</section><section>
+<iframe id="wooclap-67c04a0eb1c547d82e6b6259" allowfullscreen="" frameborder="0" height="100%" mozallowfullscreen="" style="min-width: 500px;
+    min-height:1000px" src="https://app.wooclap.com/events/MINRHT/questions/67c04a0eb1c547d82e6b6259" width="100%"></iframe>
+<script>
+    if (/.*?([?&])print-pdf/.test(window.location.toString())) {
+        console.log("Printing detected. Disabling wooclap.")
+        let toDisable = document.getElementById("wooclap-67c04a0eb1c547d82e6b6259");
+        let parent = toDisable.parentElement;
+        toDisable.remove()
+        let replacement = document.createTextNode(
+            "There was a Wooclap pool here, but they get disabled when printing.\
+            You might be able to retrieve the results at:\
+            https://app.wooclap.com/events/MINRHT/questions/67c04a0eb1c547d82e6b6259"
+        );
+        parent.appendChild(replacement)
+    }
+</script>
+</section><section>
+<p><img src="riding60.jpg" alt="riding"></p>
+</section><section>
+<iframe id="wooclap-67c04a48658844317b46a4bc" allowfullscreen="" frameborder="0" height="100%" mozallowfullscreen="" style="min-width: 500px;
+    min-height:1000px" src="https://app.wooclap.com/events/MINRHT/questions/67c04a48658844317b46a4bc" width="100%"></iframe>
+<script>
+    if (/.*?([?&])print-pdf/.test(window.location.toString())) {
+        console.log("Printing detected. Disabling wooclap.")
+        let toDisable = document.getElementById("wooclap-67c04a48658844317b46a4bc");
+        let parent = toDisable.parentElement;
+        toDisable.remove()
+        let replacement = document.createTextNode(
+            "There was a Wooclap pool here, but they get disabled when printing.\
+            You might be able to retrieve the results at:\
+            https://app.wooclap.com/events/MINRHT/questions/67c04a48658844317b46a4bc"
+        );
+        parent.appendChild(replacement)
+    }
+</script>
+</section><section>
+<h2 id="would-it-be-more-convincing-if-i-precisely-explained-how-the-hippo-was-tamed-and-ridden">Would it be more convincing if I precisely explained <em>how</em> the hippo was tamed and ridden?</h2>
+
+
+<span class="fragment ">
+  <h2 id="would-it-be-more-convincing-if-multiple-independent-people-applied-the-same-procedure-and-obtained-the-same-result">Would it be more convincing if multiple independent people applied the same procedure and obtained the <em>same result</em>?</h2>
+
+</span>
+
+</section><section>
+<h1 id="picture-reproducible-experiments-or-didnt-happen"><del>Picture</del> Reproducible experiments, or didn’t happen</h1>
+<p><img src="experiment.webp" alt="experiment"></p>
+<p><small>AI didn’t like the letter R</small></p>
+</section><section>
+<p><img src="https://user-images.githubusercontent.com/1991673/236500955-b65de211-3b51-4adf-b0e5-6f248771e479.png" alt="image"></p>
+</section><section>
+<h2 id="replication-crisis">Replication crisis</h2>
+<h3 id="aka-replicability-crisis-or-reproducibility-crisis">aka replicability crisis or reproducibility crisis</h3>
+<ul>
+<li>
+<p>ongoing <em>methodological crisis</em></p>
+</li>
+<li>
+<p>the results of many scientific studies are hard or impossible to <em>reproduce</em>.</p>
+</li>
+<li>
+<p>empirical reproductions are essential for the the scientific method</p>
+</li>
+</ul>
+<h4 id="no-reproducibility-rightarrow-scientific-credibility-is-undermined">no reproducibility $\Rightarrow$ scientific credibility is undermined</h4>
+</section><section>
+<p><img src="genpapers.png" alt="">
+
+
+<span class="fragment ">
+  <img src="genpapers-stats.png" alt="">
+</span>
+
+
+
+<span class="fragment ">
+  <img src="genpapers-risk.png" alt="">
+</span>
+</p>
+</section><section>
+<h2 id="the-good-news-people-working-in-computer-science-are-lucky">The good news: people working in computer science are lucky!</h2>
+<h4 id="on-average">(on average)</h4>
+<ul>
+<li>It’s the only engineering discipline producing <em>mass-less</em> artifacts
+<ul>
+<li>Much easier to <em>share</em></li>
+</ul>
+</li>
+<li>Even if we work in highly unpredictable contexts, we can <em>control randomness</em> in many experiments
+<ul>
+<li>Much easier to <em>reproduce</em></li>
+</ul>
+</li>
+<li>We have support tools to <em>track changes</em>, <em>automate</em>, and <em>manage</em> complexity
+<ul>
+<li>Much easier to <em>maintain</em></li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="develop-and-share-your-tool-or-experiment-checklist">Develop and share your tool or experiment, checklist</h2>
+<ol>
+<li>Set up a <em>version control system</em></li>
+<li>Prepare a code <em>repository</em></li>
+<li>Set up a <em>build automation</em> system</li>
+<li>Make sure you can <em>control randomness</em></li>
+<li>Work in isolation using <em>containers</em></li>
+<li>Raise your confidence with <em>continuous integration</em> and <em>continuous delivery</em></li>
+<li>Pick a good <em>license</em></li>
+<li><em>Document</em> your work</li>
+</ol>
+</section><section>
+<h1 id="fa-version-control-systems"><em>fa<strong>IR</strong></em>: Version Control Systems</h1>
+<ol>
+<li>Keeps track of changes</li>
+<li>Fosters collaboration</li>
+<li>Foundational tool for sharing through well-known source code hosting platforms</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>set it up early to support the construction of the artifact</li>
+<li><code>git</code> is a standard de-facto, use it</li>
+<li>track only non-generated files $\Rightarrow$ set up and maintain a good <code>.gitignore</code></li>
+<li>take your time to understand how to <em>solve conflicts</em></li>
+<li>learn the basics using a terminal</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>start using it when it is time to share the artifact</li>
+<li>pick niche and/or declining tools (even if they are good – <code>hg</code>, <code>svn</code>…)</li>
+<li>paste commands / fiddle with UIs without understanding what you are doing</li>
+<li>delete the repo and start over</li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>Use it for the paper, too, if you write in $\LaTeX$</li>
+<li>Agree on a branching strategy with your collaborators</li>
+<li>Learn <code>rebase</code>, <code>bisection</code>, <code>cherry-pick</code>, and other advanced features</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section>
+<h1 id="fa-public-code-repositories"><em><strong>FA</strong>ir</em>: Public code repositories</h1>
+<ol>
+<li>The place where others will search for your code
+<ul>
+<li>Especially if it is a <strong>tool</strong> or a <strong>library</strong></li>
+</ul>
+</li>
+<li>Fosters collaboration</li>
+<li>Provide many useful ancillary services
+<ul>
+<li>Issue tracking</li>
+<li>Continuous integration</li>
+<li>Documentation hosting</li>
+</ul>
+</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>prefer cloud-hosted repositories to on-premise ones</li>
+<li>if you can, use <a href="https://github.com">GitHub</a> <i class="fa-brands fa-github"></i></li>
+<li>a reasonable niche alternative is <a href="https://gitlab.com">GitLab</a> <i class="fa-brands fa-gitlab"></i></li>
+<li>prepare a good <code>README.md</code> file to guide users</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>share only through your institutional website, unless you are forced to</li>
+<li>upload archives instead of code, it’s not a 1990s FTP server</li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>use <em>pull requests</em> to contribute upstream or integrate changes if it is a long-lived project</li>
+<li>investigate the <em>additional services</em>, e.g., bots that propose dependency updates</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section>
+<h1 id="fai-build-automation"><em>fai<strong>R</strong></em>: Build automation</h1>
+<ol>
+<li>Automatic fetch and download of software dependencies</li>
+<li>Automatic compilation and packaging</li>
+<li>Automatic testing</li>
+<li>Automatic execution of the experiments</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>pick tools based on the language/ecosystem <em>favoring those most used</em> in the development community
+<ul>
+<li>Java / Kotlin $\Rightarrow$ Gradle</li>
+<li>JavaScript $\Rightarrow$ npm</li>
+<li>Python $\Rightarrow$ poetry</li>
+</ul>
+</li>
+<li>strive to have <em>a single short command</em> on a freshly cloned copy run the entire experiment
+or test and pack the tool</li>
+<li>minimize the pre-requirements</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>require manual steps</li>
+<li>rely on dependencies not available in mainstream repositories</li>
+<li>require an <em>IDE</em> to run the experiments</li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>use the build tool to install the toolchains, if possible (see e.g., the Gradle Toolchains)</li>
+<li>build a one-command, zero-setup demo, e.g.:
+<ul>
+<li><code>curl -sL https://bit.ly/dais-2023-loadshift | bash</code></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Example: <a href="https://github.com/angelacorte/vmc-experiments">https://github.com/angelacorte/vmc-experiments</a></p>
+</section><section>
+<h1 id="fai-control-randomness"><em>fai<strong>R</strong></em>: Control randomness</h1>
+<ol>
+<li>Obtain the same <em>exact</em> results when running the same experiment</li>
+<li>When building a tool or library, make sure that the same input produces the same output</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>always <em>seed</em> your pseudo-random number generator</li>
+<li>when modeling a random process, always expose an <em>API</em> to set the seed</li>
+<li>when interacting with the real-world, use <em>mocks</em> or <em>stubs</em>
+(there are many great testing libraries that provide them)</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>call <code>Math.random()</code>, <code>random.randint</code>, <code>rand()</code> or similar functions</li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>In case of unavoidable randomness, e.g., due to <em>parallelism</em>,
+provide a <em>companion experiment</em> (smaller in size) that can be executed deterministically</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section>
+<h1 id="fa-isolation-and-self-containment-via-containers"><em>fa<strong>IR</strong></em>: Isolation and self-containment via containers</h1>
+<ol>
+<li>It runs on your machine? Ship your machine!</li>
+<li>Easy to share lightweight virtual machines (NOTE: they are not VMs)</li>
+<li>They apply to <strong>experiments</strong>, much less to <strong>tools</strong></li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>prepare one or more <code>Dockerfile</code>s packing your experiment and all its dependencies</li>
+<li>prefer <em>containers over setup instructions</em> for clients</li>
+<li>publish your images on a public registry (e.g., <em>dockerhub</em>)</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>mount and write into user-local folders with the <code>root</code> user</li>
+<li>until they allow access without a token, avoid GitHub’s <code>ghcr.io</code> registry</li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>Use orchestrators such as <code>docker-compose</code> to manage complex setups</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Example: <a href="https://github.com/nicolasfara/experiments-2024-ACSOS-imageonomics-drones">https://github.com/nicolasfara/experiments-2024-ACSOS-imageonomics-drones</a></p>
+</section><section>
+<h1 id="fai-continuous-integration-and-continuous-delivery"><em>fai<strong>R</strong></em>: Continuous integration and continuous delivery</h1>
+<ol>
+<li>For each change, automatically run a verification process</li>
+<li>Easy to share lightweight virtual machines (NOTE: they are not VMs)</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>set up the <em>CI/CD pipeline</em> as soon as possible
+<ul>
+<li>most code hosting platforms provide it for free within limits</li>
+</ul>
+</li>
+<li>rely on the <em>build process</em> that you set up before</li>
+<li><em>deliver</em> the artifacts automatically if the verification succeeds</li>
+<li>produce a <em>reduced version</em> of the experiments that can serve <em>testing purposes</em> and can be used as <em>quick demo</em></li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>run the <em>whole experiments</em> in the pipeline even if they take hours</li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>automatically deal with updates and patches using a <em>automatic merging rules</em> for PRs</li>
+<li>automatically release new versions (checkout <a href="https://github.com/semantic-release/semantic-release">Semantic Release</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Example: <a href="https://github.com/nicolasfara/experiments-2024-acsos-multi-tier-field-based-applications">https://github.com/nicolasfara/experiments-2024-acsos-multi-tier-field-based-applications</a></p>
+</section><section>
+<h1 id="f-pick-a-license"><em>f<strong>A</strong>ir</em>: Pick a license</h1>
+<ol>
+<li>Unlicensed software is <a href="https://choosealicense.com/no-permission/">proprietary</a>
+<ul>
+<li>the copyright exsists even if you don’t write it, unless you <em>explicitly renounce</em> to part of it</li>
+</ul>
+</li>
+<li>Pick the right license for the job, depending on your goals</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>use a <em>standard license</em> (e.g., MIT, Apache, GPL, LGPL)</li>
+<li>check what your license allows and what it does not</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>concoct your own license
+<ul>
+<li>exception: adding a <em>linking/classpath exception</em> to the GPL</li>
+</ul>
+</li>
+<li>use a <em>funny</em> license, such as Beerware or WTFPL</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="rules-of-thumb">Rules of thumb</h2>
+<ul>
+<li>if people to do whatever they want to, use <em>MIT</em> or <em>BSD</em></li>
+<li>if you want to track contributions or protect trademarks, use <em>Apache 2.0</em></li>
+<li><em>do not use GNU LGPL</em> if you want companies to use your library
+<ul>
+<li>forces the linking software to be partly reverse-engineerable</li>
+<li>a <em>GNU GPL with linking/classpath exception</em> is more permissive</li>
+</ul>
+</li>
+<li>if you wanto to be protective and force everyone using your stuff to release theirs,
+use <em>GNU GPL</em></li>
+<li>if your software is networked, consider <em>GNU Affero</em> in place of <em>GNU GPL</em></li>
+<li><em>do not use Creative Commons licenses for software</em></li>
+<li>for any detailed use, <em>ask your legal team</em></li>
+</ul>
+</section><section>
+<h1 id="fa-archival-copies-and-digital-object-identifiers"><em><strong>FA</strong>i<strong>R</strong></em>: Archival copies and digital object identifiers</h1>
+<ol>
+<li>Don’t let your software disappear</li>
+<li>Let other reference specific versions of your software through a DOI</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>connect GitHub to an archival service, e.g., <a href="https://zenodo.org">Zenodo</a>
+<ul>
+<li>every GitHub release will be <em>automatically archived</em> and <em>assigned a DOI</em></li>
+</ul>
+</li>
+<li>Use services such as <a href="https://doi2bib.org/">DOI2bib</a> to get a BibTeX entry for your DOI
+<ul>
+<li><em>Clean it up</em> if you use bots, or they’ll appear as coauthors</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>upload software manually to archives</li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>treat your documentation as you treat your software: <em>version it</em>, <em>review it</em>, <em>test it</em></li>
+<li>configure the <em>CI/CD pipeline</em> to automatically build and deploy the documentation</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Example: <a href="https://github.com/anitvam/dsrt-2024-jakta-alchemist">https://github.com/anitvam/dsrt-2024-jakta-alchemist</a> $\Rightarrow$ <a href="https://doi.org/10.5281/zenodo.11581945"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.11581945.svg" alt="DOI"></a></p>
+</section><section>
+<h1 id="f-document-your-work"><em>f<strong>AI</strong>r</em>: Document your work</h1>
+<ol>
+<li>Help other people understand your work</li>
+<li>Help other people build on your work</li>
+</ol>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col "><h2 id="dos">Dos</h2>
+<ul>
+<li>pick a framework to better organize your documentation
+<ul>
+<li>I recommend the <a href="https://docs.divio.com/documentation-system/">DIVIO documentation system</a></li>
+</ul>
+</li>
+<li>leverage <a href="https://pages.github.com/">GitHub Pages</a> or similar services to host your documentation
+<ul>
+<li>with every organization, you get a free static website <code>https://&lt;org&gt;.github.io/</code></li>
+<li>you get one with every repository, too, at <code>https://&lt;username&gt;.github.io/&lt;repository&gt;</code></li>
+</ul>
+</li>
+<li>use a <em>static site generator</em> (e.g., <a href="https://gohugo.io/">Hugo</a>, <a href="https://jekyllrb.com/">Jekyll</a>)
+to convert Markdown documentation into a website</li>
+</ul>
+</div>
+<div class="col "><h2 id="donts">Don’ts</h2>
+<ul>
+<li>use HTML/js/CSS directly, it’s hard to <em>maintain</em></li>
+</ul>
+</div>
+<div class="col "><h2 id="advanced">Advanced</h2>
+<ul>
+<li>treat your documentation as you treat your software: <em>version it</em>, <em>review it</em>, <em>test it</em></li>
+<li>configure the <em>CI/CD pipeline</em> to automatically build and deploy the documentation</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Example: <a href="https://alchemistsimulator.github.io/">https://alchemistsimulator.github.io/</a></p>
+</section><section>
+<h1 id="conclusion">Conclusion</h1>
+<ul>
+<li>
+
+<span class="fragment ">
+  Make sure <em>others can reproduce</em> your experiments
+</span>
+</li>
+<li>
+
+<span class="fragment ">
+  Lower the <em>maintenance burden</em> of your tools by using <em>DevOps techniques</em>
+</span>
+
+<ul>
+<li>
+
+<span class="fragment ">
+  Version Control
+</span>
+</li>
+<li>
+
+<span class="fragment ">
+  Build Automation
+</span>
+</li>
+<li>
+
+<span class="fragment ">
+  Containerization
+</span>
+</li>
+<li>
+
+<span class="fragment ">
+  CI/CD
+</span>
+</li>
+</ul>
+</li>
+<li>
+
+<span class="fragment ">
+  Upload your artifacts <em>where others are likely to search</em> for them
+</span>
+</li>
+<li>
+
+<span class="fragment ">
+  Make your experiment <em>future-proof</em> by archiving os software-preservation platforms
+</span>
+</li>
+<li>
+
+<span class="fragment ">
+  Don’t forget to <em>apply a license</em>
+</span>
+</li>
+</ul>
+</section><section>
+<h3 id="and-of-course-don">And of course, <strong>don’t try to tame and ride a hippo</strong></h3>
+<p><img src="death.svg" alt="death"></p>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src="/slides-2025-fair/reveal-hugo/object-assign.js"></script>
+
+<a href="/slides-2025-fair/reveal-js/dist/print/" id="print-location" style="display: none;"></a>
+
+<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
+<script type="application/json" id="reveal-hugo-page-params">null</script>
+
+<script src="/slides-2025-fair/reveal-js/dist/reveal.js"></script>
+
+
+  
+  
+  <script type="text/javascript" src="/slides-2025-fair/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/slides-2025-fair/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/slides-2025-fair/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/slides-2025-fair/reveal-js/plugin/notes/notes.js"></script>
+  
+  
+  <script type="text/javascript" src="/slides-2025-fair/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+
+  var revealHugoPlugins = {
+    plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+   };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+
+<script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<script>
+  if (/.*?(\?|&)print-pdf/.test(window.location.toString())) {
+      var ytVideos = document.getElementsByTagName("iframe")
+      for (let i = 0; i < ytVideos.length; i++) {
+          var videoFrame = ytVideos[i]
+          var isYouTube = /^https?:\/\/(www.)youtube\.com\/.*/.test(videoFrame.src)
+          if (isYouTube) {
+              console.log(`Removing ${videoFrame.src}`)
+              var parent = videoFrame.parentElement
+              videoFrame.remove()
+              var p = document.createElement('p')
+              p.append(
+                  document.createTextNode(
+                      "There was an embedded video here, but it is disabled in the printed version of the slides."
+                  )
+              )
+              p.append(document.createElement('br'))
+              p.append(
+                  document.createTextNode(
+                      `Visit instead ${
+                          videoFrame.src
+                      } or ${
+                          videoFrame.src.replace(
+                              /(^https?:\/\/(www.)youtube\.com)\/(embed\/)(\w+).*/,
+                              "https://www.youtube.com/watch?v=$4"
+                          )
+                      }`
+                  )
+              )
+              parent.appendChild(p)
+          }
+      }
+  }
+</script>
+
+
+    
+  
+
+</body></html>
