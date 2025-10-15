@@ -279,7 +279,7 @@ Example: https://github.com/nicolasfara/experiments-2024-acsos-multi-tier-field-
 {{% /multicol %}}
 
 ## Rules of thumb
-* if people to do whatever they want to, use *MIT* or *BSD*
+* if you want people to do whatever they want to, use *MIT* or *BSD*
 * if you want to track contributions or protect trademarks, use *Apache 2.0*
 * *do not use GNU LGPL* if you want companies to use your library
     * forces the linking software to be partly reverse-engineerable
