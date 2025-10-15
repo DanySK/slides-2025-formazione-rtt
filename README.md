@@ -1,1 +1,1 @@
-https://danysk.github.io/slides-2025-fair/
+https://danysk.github.io/slides-2025-formazione-rtt/
