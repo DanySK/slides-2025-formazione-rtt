@@ -10,7 +10,8 @@ aliases = [
 
 +++
 
-# Costruzione di software per la ricerca ed esperimenti in-silico riproducibili: buone pratiche
+# Principi di gestione dei dati di ricerca
+## Software per la ricerca ed esperimenti in-silico riproducibili: buone pratiche
 
 #### {{% today %}}
 ## [Danilo Pianini](mailto:danilo.pianini@unibo.it)
