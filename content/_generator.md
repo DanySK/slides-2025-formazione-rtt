@@ -18,77 +18,6 @@ aliases = [
 
 ---
 
-{{< slide background-image="hippo2.jpg" state="blur-animation-light" transition="fade-in fade-out" >}}
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<!-- white background -->
-<span style="background-color: white; border-radius: 0.2em;">
-source: https://www.earth.com/news/hippopotamus-population-hit-hard-by-habitat-destruction
-
-</span>
-
----
-
-# Hippos (Hippopotamus amphibius) facts
-
-* {{% frag c="Big (second largest land animal after elephants)" %}}
-* {{% frag c="(Relatively) Fast (30km/h on land, 8km/h in water)" %}}
-* {{% frag c="Strong bite (13.8MPa, twice the strength of a lion bite)" %}}
-* {{% frag c="Aggressive and highly unpredictable" %}}
-* {{% frag c="Among the deadliest animals worldwide by human deaths" %}}
-
----
-
-Let's play "science or fiction"
-
-# An adult hippo's bite can crush in half an adult crocodile
-
-{{% wooclap id="67bf587983bca1e34a7e37b4" %}}
-
----
-
-{{% wooclap id="67c04a1eb1c547d82e6b75fd" height="1000" %}}
-
----
-
-![crocodile](crocodile80.jpg)
-
----
-
-{{% wooclap id="67c04a45099d357cb3fae084" height="1000" %}}
-
----
-
-![pic](pic.webp)
-
----
-
-Again, science or fiction?
-
-# Humans can tame and ride hippos
-
----
-
-{{% wooclap id="67c04a0eb1c547d82e6b6259" height="1000" %}}
-
----
-
-![riding](riding60.jpg)
-
----
-
-{{% wooclap id="67c04a48658844317b46a4bc" height="1000" %}}
-
----
-
-## Would it be more convincing if I precisely explained *how* the hippo was tamed and ridden?
-
-{{% fragment %}}
-## Would it be more convincing if multiple independent people applied the same procedure and obtained the *same result*?
-{{% /fragment %}}
-
----
-
 # ~~Picture~~ Reproducible experiments, or didn't happen
 
 ![experiment](experiment.webp)
@@ -405,10 +334,12 @@ Example: https://github.com/anitvam/dsrt-2024-jakta-alchemist $\Rightarrow$ [![D
     * you get one with every repository, too, at `https://<username>.github.io/<repository>`
 * use a *static site generator* (e.g., [Hugo](https://gohugo.io/), [Jekyll](https://jekyllrb.com/))
 to convert Markdown documentation into a website
+* rely on LLMs to *enrich* after you decided a structure
 {{% /col %}}
 {{% col %}}
 ## Don'ts
 * use HTML/js/CSS directly, it's hard to *maintain*
+* use LLMs blindly
 {{% /col %}}
 {{% col %}}
 ## Advanced
@@ -432,9 +363,3 @@ Example: https://alchemistsimulator.github.io/
 * {{% fragment %}} Upload your artifacts *where others are likely to search* for them {{% /fragment %}}
 * {{% fragment %}} Make your experiment *future-proof* by archiving os software-preservation platforms {{% /fragment %}}
 * {{% fragment %}} Don't forget to *apply a license* {{% /fragment %}}
-
----
-
-### And of course, **don't try to tame and ride a hippo**
-
-![death](death.svg)
