@@ -2,11 +2,8 @@
 +++
 
 title = "Reproducible experiments or didn't happen"
-description = "The replicability crisis and recipes for self-organizing systems"
+description = "The replicability crisis and recipes for FAIR software production"
 outputs = ["Reveal"]
-aliases = [
-    "/guide/"
-]
 
 +++
 

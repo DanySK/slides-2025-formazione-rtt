@@ -1,6 +1,6 @@
-baseURL = "https://danysk.github.io/slides-2025-fair"
+baseURL = "https://danysk.github.io/slides-2025-formazione-rtt"
 languageCode = "en-us"
-title = "Open Science Corner 2025"
+title = "Software per la ricerca ed esperimenti in-silico riproducibili: buone pratiche"
 disableKinds = ["sitemap", "RSS"]
 theme = "reveal-hugo"
 publishDir = "build"
